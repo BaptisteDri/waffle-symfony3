@@ -1,0 +1,396 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="alert alert-success alert-dismissible" role="alert">
+    <strong>Message sent successfully !</strong>
+    <button type="button" class="close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+
+  <div id="fullpage">
+
+    <div id="particles-js">
+     <canvas class="particles-js-canvas-el"></canvas>
+    </div>
+
+    <div class="section index">
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" id="h1-container">
+          <h1 class="animated bounceInDown"><a href="/">
+            <img src="/img/logo_white.png" alt="" height="280">
+            <br>
+            Waffle Music
+          </a></h1>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" id="bio-container">
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="rs-container">
+          <a href="https://open.spotify.com/artist/5f56SSkVvKsOzkHNSim6u4?si=SURAvRfYQseOTJZuHo2WvA" title="Spotify" target="_blank"><img src="/img/rs/spotify.svg" alt="logo spotify format svg" height="35"></a>
+          <a href="https://www.deezer.com/fr/artist/1587152" title="Deezer" target="_blank"><img src="/img/rs/deezer.png" alt="Logo Deezer" height="35"></a>
+          <a href="https://soundcloud.com/wafflemusic" title="Soundcloud" target="_blank"><img src="/img/rs/soundcloud.svg" alt="logo soundcloud format svg" height="35"></a>
+          <a href="https://twitter.com/Waffle_MusicFR" title="Twitter" target="_blank"><img src="/img/rs/twitter.svg" alt="logo format twitter svg" height="35"></a>
+          <a href="https://www.facebook.com/WaffleMusicFR/" title="Facebook" target="_blank"><img src="/img/rs/facebook.svg" alt="logo facebook format svg" height="35"></a>
+          <a href="https://www.instagram.com/waffle_record/" title="Instagram" target="_blank"><img src="/img/rs/instagram.svg" alt="logo instagram format svg" height="35"></a>
+
+          <img src="/img/arrow.svg" height="80" alt="" class="animated bounce infinite arrow-to-down">
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="section biography">
+      <div class="row">
+        <div class="col-xl-1"></div>
+        <div class="col-xl-5">
+          <img src="/img/waffle-bio.jpg" alt="Waffle wearing his cap" id="bio-img">
+        </div>
+        <div class="col-xl-5" id="biography-container">
+          <h2>Biography</h2>
+          <p>At the age of 10, Théo set up his first pop-rock band "Distant Trip" and became singer-songwriter.</p>
+          <p>He reconverted in 2013 in electronic music and develops his own ambient style rock, electro, hip-hop, in which he mixes his taste for film music.</p>
+          <p>Addicted to the guitar, he is inspired by artists such as Madeon, Chainsmokers and Ofenback to develop a deep and warm music.</p>
+          <p>He will join a sound engineer school in Paris that will allow him to finalize, Masterize and unveil himself to the public as WAFFLE with his first EP "Alone" released in March 2018.</p>
+          <p>Present on several fronts, Theo works with international rappers and singers in the realization of beat, instrumental and others.</p>
+          <p>Increasingly demanded on stage, WAFFLE is already in the realization of his next EP which will complete the first one in the creation of a live performance.</p>
+        </div>
+        <div class="col-xl-1"></div>
+      </div>
+
+      <h2>Discography</h2>
+
+      <div class="row">
+        <div class="col-xl-2"></div>
+        <div class="col-xl-2">
+          <h3>&nbsp;&nbsp;Albums / EPs</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-2">
+        </div>
+      {% set i = 0 %}
+      {% for album in albums %}
+          <div class="col-xl-2">
+            <div class="col-disco" ontouchstart="this.classList.toggle('hover');">
+              <div class="container">
+                <div class="front" style="background-image: url('/img/covers/{{ album.image }}')">
+                  <div class="inner">
+                    <p>{{ album.author }}</p>
+                    <span>{{ album.title }}</span>
+                  </div>
+                </div>
+                <div class="back">
+                  <div class="inner">
+                    <p>
+
+                      {% for link in album.links %}
+                        <a href="{{ link.link }}" target="_blank"><img src="/img/rs/{{ link.rsId.image }}" height="50"></a>
+                        <br>
+                      {% endfor %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% if i == 3 %}
+            {% set i = 0 %}
+            <div class="col-xl-2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-2">
+            </div>
+          {% else %}
+            {% set i = i + 1 %}
+          {% endif %}
+      {% endfor %}
+      {% for i in i..3 %}
+        <div class="col-xl-2">
+        </div>
+      {% endfor %}
+        <div class="col-xl-2">
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-xl-2"></div>
+        <div class="col-xl-2">
+          <h3>&nbsp;&nbsp;Singles</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-2">
+        </div>
+      {% set i = 0 %}
+      {% for single in singles %}
+          <div class="col-xl-2">
+            <div class="col-disco" ontouchstart="this.classList.toggle('hover');">
+              <div class="container">
+                <div class="front" style="background-image: url('/img/covers/{{ single.image }}')">
+                  <div class="inner">
+                    <p>{{ single.author }}</p>
+                    <span>{{ single.title }}</span>
+                  </div>
+                </div>
+                <div class="back">
+                  <div class="inner">
+                    <p>
+
+                      {% for link in single.links %}
+                        <a href="{{ link.link }}" target="_blank"><img src="/img/rs/{{ link.rsId.image }}" height="50"></a>
+                        <br>
+                      {% endfor %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% if i == 3 %}
+            {% set i = 0 %}
+            <div class="col-xl-2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-2">
+            </div>
+          {% else %}
+            {% set i = i + 1 %}
+          {% endif %}
+      {% endfor %}
+      {% for i in i..3 %}
+        <div class="col-xl-2">
+        </div>
+      {% endfor %}
+      </div>
+
+
+      <div class="row">
+        <div class="col-xl-2"></div>
+        <div class="col-xl-2">
+          <h3>&nbsp;&nbsp;Remix</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-2">
+        </div>
+      {% set i = 0 %}
+      {% for remix in remixs %}
+          <div class="col-xl-2">
+            <div class="col-disco" ontouchstart="this.classList.toggle('hover');">
+              <div class="container">
+                <div class="front" style="background-image: url('/img/covers/{{ remix.image }}')">
+                  <div class="inner">
+                    <p>{{ remix.author }}</p>
+                    <span>{{ remix.title }}</span>
+                  </div>
+                </div>
+                <div class="back">
+                  <div class="inner">
+                    <p>
+
+                      {% for link in remix.links %}
+                        <a href="{{ link.link }}" target="_blank"><img src="/img/rs/{{ link.rsId.image }}" height="50"></a>
+                        <br>
+                      {% endfor %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% if i == 3 %}
+            {% set i = 0 %}
+            <div class="col-xl-2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-2">
+            </div>
+          {% else %}
+            {% set i = i + 1 %}
+          {% endif %}
+      {% endfor %}
+      {% for i in i..3 %}
+        <div class="col-xl-2">
+        </div>
+      {% endfor %}
+        <div class="col-xl-2">
+        </div>
+      </div>
+
+
+      <img src="/img/arrow.svg" height="80" alt="" class="animated bounce infinite arrow-to-down">
+
+    </div>
+
+
+    <!-- Store -->
+    <div class="section store">
+
+      <div class="slide slide-store1"><div class="store-container">
+
+        <form id="msform" class="msform-modal" method="post">
+          <fieldset>
+            <h2 class="fs-title">Waffle caps Signature</h2>
+            <h3 class="fs-subtitle">Only available in France, unique size, 4 colors (black, beige, blue and red).</h3>
+            <input type="text" name="firstname" placeholder="Prénom"  id="order-firstname"required lang="fr">
+            <input type="text" name="lastname" placeholder="Nom"  id="order-lastname"required lang="fr">
+            <input type="text" name="address" placeholder="Adresse"  id="order-address"required lang="fr">
+            <input type="text" name="postal" placeholder="Code Postal"  id="order-postal"required lang="fr">
+            <input type="text" name="city" placeholder="Ville"  id="order-city"required lang="fr">
+            <input type="email" name="email" placeholder="Email"  id="order-email"required lang="fr">
+            <input type="text" name="phoneNumber" placeholder="Téléphone (Facultatif)" id="order-phone" lang="fr">
+            <a class="action-button" id="form-cancel" lang="fr">Annuler</a>
+            <button class="action-button" id="order-form-submit" lang="fr">Envoyer</button>
+          </fieldset>
+        </form>
+
+        <a href="#store" class="order-btn btn btn-outline-light btn-lg">Order now</a>
+        <img src="/img/arrow.svg" height="80" alt="" class="animated bounce infinite arrow-to-down">
+      </div></div>
+      <div class="slide slide-store2"><div class="store-container">
+
+        <a href="#store" class="order-btn btn btn-outline-light btn-lg">Order now</a>
+        <img src="/img/arrow.svg" height="80" alt="" class="animated bounce infinite arrow-to-down">
+      </div></div>
+      <div class="slide slide-store3"><div class="store-container">
+
+        <a href="#store" class="order-btn btn btn-outline-light btn-lg">Order now</a>
+        <img src="/img/arrow.svg" height="80" alt="" class="animated bounce infinite arrow-to-down">
+      </div></div>
+      <div class="slide slide-store4"><div class="store-container">
+
+        <a href="#store" class="order-btn btn btn-outline-light btn-lg">Order now</a>
+        <img src="/img/arrow.svg" height="80" alt="" class="animated bounce infinite arrow-to-down">
+      </div></div>
+
+    </div>
+
+    <!-- Contact -->
+    <div class="section contact">
+      <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8">
+
+          <form id="msform" class="contact-form" method="post">
+            <fieldset>
+
+              <h2 class="fs-title">Contact /<br> Booking</h2>
+              <h3 class="fs-subtitle"><a href="mailto:contact@waffle-music.com">contact@waffle-music.com</a><h3>
+              <hr>
+
+              <h2 class="fs-title">Demo</h2>
+              <h3 class="fs-subtitle">I'm always looking for singers / musicians for my next songs, please leave me a message !</h3>
+              <input type="text" name="firstname" placeholder="Firstname" id="contact-firstname" required>
+              <input type="text" name="lastname" placeholder="Lastname" id="contact-lastname" required>
+              <input type="email" name="email" placeholder="your.email@example.com" id="contact-email" required>
+              <input type="text" name="sdlink" placeholder="Soundcloud link"id="contact-sdlink" required>
+              <textarea name="message" style="resize:none;" placeholder="Message..." id="contact-message" required></textarea>
+              <button class="action-button" id="contact-form-submit">Submit</button>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="col-lg-2"></div>
+      </div>
+      <footer>
+          <img src="/img/brandlogo_v3.png" class="animated rubberBand infinite">
+          <br class="hide-on-small">
+          <br class="hide-on-small">
+          {{ "now"|date("Y") }} - Waffle Music <a id="easteregg">&copy;</a>
+          <br>
+          Powered by <a href="https://www.agence-dust.com" target="_blank">
+            Dust Agency
+          </a>
+      </footer>
+    </div>
+
+  </div>
+  <script type="text/javascript" src="/ext/particles.min.js"></script>
+  <script type="text/javascript" src="/js/main.index.3.js"></script>
+  <script type="text/javascript">
+    function ajaxOrdering(){
+      // On récupère les valeurs
+      var formFirstName = $('#order-firstname').val();
+      var formLastName = $('#order-lastname').val();
+      var formAddress = $('#order-address').val();
+      var formPostal = $('#order-postal').val();
+      var formCity = $('#order-city').val();
+      var formEmail = $('#order-email').val();
+      var formPhoneNumber = $('#order-phone').val();
+      // Requête
+      $.ajax({
+        url: "{{ path('mail') }}",
+        method: "post",
+        data: {
+          mailType : "store",
+          firstName : formFirstName,
+          lastName : formLastName,
+          address : formAddress,
+          postal : formPostal,
+          city: formCity,
+          email : formEmail,
+          phoneNumber : formPhoneNumber
+        }
+      }).done(function(data){
+        console.log(data);
+      }).fail(function(){
+        console.log('fail');
+      });
+      // Vider le formulaire
+      $('#order-firstname').val('');
+      $('#order-lastname').val('');
+      $('#order-address').val('');
+      $('#order-postal').val('');
+      $('#order-city').val('');
+      $('#order-email').val('');
+      $('#order-phone').val('');
+    }
+
+    function ajaxContact(){
+      // On récupère les valeurs
+      var formFirstName = $('#contact-firstname').val();
+      var formLastName = $('#contact-lastname').val();
+      var formEmail = $('#contact-email').val();
+      var formSdLink = $('#contact-sdlink').val();
+      var formMessage = $('#contact-message').val();
+      // Requête
+      $.ajax({
+        url: "{{ path('mail') }}",
+        method: "post",
+        data: {
+          mailType : "demo",
+          firstName : formFirstName,
+          lastName : formLastName,
+          email : formEmail,
+          sdLink : formSdLink,
+          message : formMessage
+        }
+      }).done(function(data){
+        console.log('success');
+      }).fail(function(data){
+        console.log(data);
+      });
+      // Vider le formulaire
+      $('#contact-firstname').val('');
+      $('#contact-lastname').val('');
+      $('#contact-email').val('');
+      $('#contact-sdlink').val('');
+      $('#contact-message').val('');
+    }
+  </script>
+{% endblock %}

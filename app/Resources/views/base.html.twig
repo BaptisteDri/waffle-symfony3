@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Waffle Music | Home</title>
+
+        <meta name="description" content="Waffle is a composer of electronic music, who travelled Parisian scenes. Music promoter, he has many partners. He mixes styles with music rather chill.">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+        <meta http-equiv="ScreenOrientation" content="normal">
+
+        <!-- FAVICONS -->
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/img/favicons_v2/apple-touch-icon.png') }} ">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/img/favicons_v2/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/img/favicons_v2/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('/img/favicons_v2/manifest.json') }}">
+        <link rel="mask-icon" href="{{ asset('/img/favicons_v2/safari-pinned-tab.svg') }}" color="#5bbad5">
+        <link rel="shortcut icon" href="{{ asset('/img/favicons_v2/favicon.ico') }}">
+        <meta name="msapplication-config" content="{{ asset('img/favicons_v2/browserconfig.xml') }}">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- JQUERY (CDN) -->
+        <script src="{{ asset('/ext/jquery.min.js') }}"></script>
+
+        <!-- BOOTSTRAP (CDN) -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+        <!-- Animate CSS (CDN) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+        <!-- FullPage CSS & JS -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('/ext/jquery.fullPage.css') }}">
+        <script type="text/javascript" src="{{ asset('/ext/jquery.fullPage.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/ext/scrolloverflow.min.js') }}"></script>
+
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300" rel="stylesheet">
+
+
+
+
+        <!-- REGULAR CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.index.4.css') }}">
+
+
+        <!-- ANALYTICS -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-92781453-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+
+
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
